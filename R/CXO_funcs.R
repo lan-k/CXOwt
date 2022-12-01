@@ -191,8 +191,10 @@ CXO_wt <- function(data, exposure, event, Id) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(cases)
-#' CXO_wt_boot(data=cases, exposure=ex, event=Event, Id = Id, B=5)
+#' CXO_wt_boot(data=cases, exposure=ex, event=Event, Id = Id, B=1000)
+#' }
 CXO_wt_boot <- function(data, exposure, event, Id, B=500, normal = TRUE) {
 
   df <- data %>%

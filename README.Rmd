@@ -18,6 +18,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+
 # CXOwt 
 
 This R package was is code to implement weighted conditional logistic regression described  [here](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-021-01408-5). 

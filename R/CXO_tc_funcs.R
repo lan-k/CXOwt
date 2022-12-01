@@ -117,8 +117,12 @@ CXO_tc_wt <- function(data, exposure, event, Id) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' # Chop ----------------------------------------------------------------------
 #' data(casetimecontrols)
+#' try(CXO_tc_wt_boot(casetimecontrols, exposure = ex, event = Event, Id=Id, B = 3))
+#' # It is recommended that at least 500 bootstrap replications are used
+#' # Unchop ----------------------------------------------------------------------
+#' \dontrun{
 #' CXO_tc_wt_boot(casetimecontrols, exposure = ex, event = Event, Id=Id, B = 1000)
 #' }
 CXO_tc_wt_boot <- function(data, exposure, event, Id, B=500, normal = TRUE) {

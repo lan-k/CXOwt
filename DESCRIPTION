@@ -1,0 +1,27 @@
+Package: CXOwt
+Title: Weighted Conditional Logistic Regression for Case-Crossover and Case-Time Control Studies
+Version: 0.0.0.9000
+Authors@R: 
+    person("Lan", "Kelly", , "Lan.Kelly@unisa.edu.au", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-7691-9289"))
+Description: Produce weighted OR estimates with reduced bias in case-crossover and case-time control studies.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2.9000
+Imports: 
+    boot,
+    dplyr,
+    magrittr,
+    stats,
+    survival,
+    utils
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+VignetteBuilder: knitr

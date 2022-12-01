@@ -46,12 +46,12 @@ library(CXOwt)
 
 #case-crossover
 data(cases)
-cfit.b <- CXO_wt_boot(data=cases, exposure = ex, event = Event, Id=Id, B=200) 
+cfit.b <- CXO_wt_boot(data=cases, exposure = ex, event = Event, Id=Id, B=500) 
 summary(cfit.b)
 
 #case-time-control
 data(casetimecontrols)
-ctcfit.b <- CXO_tc_wt_boot(data=casetimecontrols, exposure = ex, event = Event, Id=Id, B = 200) 
+ctcfit.b <- CXO_tc_wt_boot(data=casetimecontrols, exposure = ex, event = Event, Id=Id, B = 500) 
 summary(ctcfit.b)
 
 

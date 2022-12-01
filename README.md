@@ -4,8 +4,7 @@
 
 [![R-CMD-check](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml)
 [![R-CMD-check](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/lan-k/CXOwt/branch/main/graph/badge.svg)](https://app.codecov.io/gh/lan-k/CXOwt?branch=main)
+[![codecov](https://codecov.io/gh/lan-k/CXOwt/branch/main/graph/badge.svg?token=TYMUR3Z03T)](https://codecov.io/gh/lan-k/CXOwt)
 <!-- badges: end -->
 
 # CXOwt

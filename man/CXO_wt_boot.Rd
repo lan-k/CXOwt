@@ -28,8 +28,12 @@ normal = F uses 2.5\% and 97.\% quantiles for 95\% CI}
 Weighted conditional logistic regression for case-crossover with bootstrapped CIs
 }
 \examples{
-\dontrun{
+# Chop ----------------------------------------------------------------------
 data(cases)
+try(CXO_wt_boot(data=cases, exposure=ex, event=Event, Id = Id, B=3))
+# It is recommended that at least 500 bootstrap replications are used
+# Unchop ----------------------------------------------------------------------
+\dontrun{
 CXO_wt_boot(data=cases, exposure=ex, event=Event, Id = Id, B=1000)
 }
 }

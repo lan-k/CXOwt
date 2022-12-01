@@ -3,7 +3,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml)
-[![R-CMD-check](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lan-k/CXOwt/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/lan-k/CXOwt/branch/main/graph/badge.svg?token=TYMUR3Z03T)](https://codecov.io/gh/lan-k/CXOwt)
 <!-- badges: end -->
 

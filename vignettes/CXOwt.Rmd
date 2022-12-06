@@ -51,7 +51,7 @@ summary(ctcfit.b)
 ```
 
 
-Alternatively, you can return the weighted conditional logistic regression objects without bootstrapping:
+Alternatively, you can return the weighted conditional logistic regression objects without bootstrapping and use other methods for calculating the 95% CI. However, this is not recommended.
 
 ```{r example2, eval=F}
 #case-crossover

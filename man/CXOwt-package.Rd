@@ -20,7 +20,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Kiyoshi Kubota \email{Kiyoshi Kubota <kubota@dsrujp.org>} (\href{https://orcid.org/0000-0001-6092-8685}{ORCID})
+  \item Kiyoshi Kubota \email{kubota@dsrujp.org} (\href{https://orcid.org/0000-0001-6092-8685}{ORCID})
 }
 
 Other contributors:

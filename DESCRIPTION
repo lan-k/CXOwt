@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Lan", "Kelly", , "Lan.Kelly@unisa.edu.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7691-9289")),
-    person("Kiyoshi", "Kubota", , "Kiyoshi Kubota <kubota@dsrujp.org>", role = c("aut"),
+    person("Kiyoshi", "Kubota", , "kubota@dsrujp.org", role = c("aut"),
            comment = c(ORCID = "0000-0001-6092-8685")),
     person("NHMRC grant GNT1157506", role = c("fnd")))     
 Description: Produce weighted OR estimates with reduced bias in case-crossover and case-time control studies.

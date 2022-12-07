@@ -11,15 +11,27 @@ navbar:
   articles:
     text: Articles
     menu:
+    - text: "Citation"
     - text: Citation
       href: https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-021-01408-5
     - text: -------
-    - text: "Menu"
+    - text: "Documents"
     - text: Introduction
-      href: 'Introduction.html'
+      href: 'articles/Introduction.html'
     - text: Examples
-      href: 'Examples.html'
+      href: 'articles/Examples.html'
     - text: Journal articles
-      href: 'Journal articles.html'
+      href: 'articles/Journal articles.html'
+reference:
+- title: Exported functions
+  desc:  Whaley nice description
+- contents:
+  - mhor
+  - SCL_bias
+  - starts_with("CXO_")
+- title: Data
+- contents:
+  - cases
+  - casetimecontrols
 
 

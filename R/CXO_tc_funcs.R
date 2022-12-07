@@ -72,6 +72,7 @@ CXO_tc_wt <- function(data, exposure, event, Id) {
 
 
 #' Internal function for Bootstrapped CIs
+#' @keywords internal
 #'
 #' @param data  input dataframe
 #' @param ii    index for bootstrapping
@@ -79,7 +80,9 @@ CXO_tc_wt <- function(data, exposure, event, Id) {
 #' @param event      outcome
 #' @param Id         person ID
 #'
+#'
 #' @return           coefficient of bootstrapped clogit
+#' @noRd
 
 .CI_tc_boot <- function(data,ii, exposure, event , Id) {
   ##internal function for bootstrapping the CIs

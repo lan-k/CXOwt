@@ -1,9 +1,12 @@
 Package: CXOwt
 Title: Weighted Conditional Logistic Regression for Case-Crossover and Case-Time Control Studies
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person("Lan", "Kelly", , "Lan.Kelly@unisa.edu.au", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-7691-9289"))
+           comment = c(ORCID = "0000-0002-7691-9289")),
+    person("Kiyoshi", "Kubota", , "Kiyoshi Kubota <kubota@dsrujp.org>", role = c("aut"),
+           comment = c(ORCID = "0000-0001-6092-8685")),
+    person("NHMRC grant GNT1157506", role = c("fnd")))     
 Description: Produce weighted OR estimates with reduced bias in case-crossover and case-time control studies.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -26,4 +29,4 @@ Depends:
     R (>= 2.10)
 LazyData: true
 VignetteBuilder: knitr
-URL: https://lan-k.github.io/CXOwt/
+URL: https://github.com/lan-k/CXOwt

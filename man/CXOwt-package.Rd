@@ -8,8 +8,25 @@
 \description{
 Produce weighted OR estimates with reduced bias in case-crossover and case-time control studies.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/lan-k/CXOwt}
+}
+
+}
 \author{
 \strong{Maintainer}: Lan Kelly \email{Lan.Kelly@unisa.edu.au} (\href{https://orcid.org/0000-0002-7691-9289}{ORCID})
+
+Authors:
+\itemize{
+  \item Kiyoshi Kubota \email{Kiyoshi Kubota <kubota@dsrujp.org>} (\href{https://orcid.org/0000-0001-6092-8685}{ORCID})
+}
+
+Other contributors:
+\itemize{
+  \item NHMRC grant GNT1157506 [funder]
+}
 
 }
 \keyword{internal}

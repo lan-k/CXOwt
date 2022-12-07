@@ -5,7 +5,8 @@ articles:
   CXOwt: CXOwt.html
   Examples: Examples.html
   Introduction: Introduction.html
-last_built: 2022-12-07T00:14Z
+  Journal-articles: Journal-articles.html
+last_built: 2022-12-07T04:45Z
 urls:
   reference: https://lan-k.github.io/CXOwt/reference
   article: https://lan-k.github.io/CXOwt/articles

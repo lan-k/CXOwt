@@ -2,4 +2,9 @@ url: https://lan-k.github.io/CXOwt/
 template:
   bootstrap: 5
   bootswatch: lumen
-
+navbar:
+  bg: primary
+  type: light
+  structure:
+    left:  [intro, articles, reference, tutorials]
+    right: [search, github]

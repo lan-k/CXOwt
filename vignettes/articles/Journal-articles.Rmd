@@ -1,0 +1,19 @@
+---
+title: "Journal articles"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The weighting method is described in 
+
+[Kubota K, Kelly TL, Sato T, Pratt N, Roughead E, Yamaguchi T. A novel weighting method to remove bias from within-subject exposure dependency in case-crossover studies.BMC Med Res Methodol 2021; 21:214](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-021-01408-5) 
+
+
+Upcoming article describing methods to reduce bias due to chronic exposure with and without switching:
+
+Kubota K, Kelly TL. Bias due to within-subject exposure dependency with or without bias due to lack of pairwise exchangeability when exposure is chronic in case-crossover and case-time-control studies: A simulation study. Am J. Epidem., in press.

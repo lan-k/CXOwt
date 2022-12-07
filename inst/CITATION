@@ -8,8 +8,7 @@ citEntry(
   year     = 2021,
   volume   = 21,
   pages    = 214,
-  url      = https://doi.org/10.1186/s12874-021-01408-5,
-  textVersion = paste(
+  url      = "https://doi.org/10.1186/s12874-021-01408-5",
+  textVersion = paste0(author,".", journal, "." year, ";" volume, ":", pages)
 
-  )
 )

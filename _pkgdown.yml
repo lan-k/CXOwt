@@ -8,3 +8,18 @@ navbar:
   structure:
     left:  [intro, articles, reference, tutorials]
     right: [search, github]
+  articles:
+    text: Articles
+    menu:
+    - text: Citation
+      href: https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-021-01408-5
+    - text: -------
+    - text: "Menu"
+    - text: Introduction
+      href: 'Introduction.html'
+    - text: Examples
+      href: 'Examples.html'
+    - text: Journal articles
+      href: 'Journal articles.html'
+
+

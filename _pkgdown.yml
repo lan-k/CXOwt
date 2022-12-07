@@ -25,6 +25,9 @@ reference:
   - mhor
   - SCL_bias
   - starts_with("CXO_")
+- title: internal
+  contents:
+  - starts_with(".CI")
 - title: Data
 - contents:
   - cases

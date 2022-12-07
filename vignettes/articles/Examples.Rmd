@@ -1,0 +1,16 @@
+build_---
+title: "Examples"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CXOwt)
+```
+
+Examples of using the CXOwt package can be found here.

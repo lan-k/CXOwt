@@ -16,11 +16,12 @@ SCL_bias(data, exposure, event, Id)
 \item{Id}{person Id for strata}
 }
 \value{
-list with CL and MH estimates and \% bias
-\itemize{
-\item scl - Standard Conditional logistic regression OR
-\item mh_or - Mantel_Haenszel OR
-\item bias - \% difference between the CL and MH OR
+A list containing:\tabular{ll}{
+\code{scl} \tab Standard Conditional logistic regression OR \cr
+\tab \cr
+\code{mh_or} \tab Mantel_Haenszel OR \cr
+\tab \cr
+\code{bias} \tab \% difference between the CL and MH OR \cr
 }
 }
 \description{

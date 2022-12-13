@@ -40,11 +40,12 @@ mhor <- function(formula, data, digits=2)  {
 #' @param event     outcome variable
 #' @param Id        person Id for strata
 #'
-#' @return  list with CL and MH estimates and % bias
-#' \itemize{
-#'   \item scl - Standard Conditional logistic regression OR
-#'   \item mh_or - Mantel_Haenszel OR
-#'   \item bias - % difference between the CL and MH OR
+#' @return  A list containing:\tabular{ll}{
+#'    \code{scl} \tab Standard Conditional logistic regression OR \cr
+#'    \tab \cr
+#'    \code{mh_or} \tab Mantel_Haenszel OR \cr
+#'    \tab \cr
+#'    \code{bias} \tab % difference between the CL and MH OR \cr
 #' }
 #' @export
 #'
@@ -191,24 +192,27 @@ CXO_wt <- function(data, exposure, event, Id) {
 #' @param normal    use normal approximation for bootstrapped CI, default is TRUE
 #'                  normal = F uses 2.5% and 97.% quantiles for 95% CI
 #'
-#' @return         OR estimate and bootstrapped 95% CI
-#' \itemize{
-#'   \item Variable - Parameter name
-#'   \item est0 - OR from weighted conditional logistic regression
-#'   \item est - Bootstrapped OR: mean if normal = TRUE, median otherwise
-#'   \item lower - Lower Bootstrapped 95% CI: using normal approximation if normal = T, 2.5th quantile otherwise
-#'   \item upper - Upper Bootstrapped 95% CI: using normal approximation if normal = T, 97.5th quantile otherwise
+#' @return A list containing:\tabular{ll}{
+#'    \code{Variable} \tab Parameter name \cr
+#'    \tab \cr
+#'    \code{est0} \tab OR from weighted conditional logistic regression \cr
+#'    \tab \cr
+#'    \code{est} \tab Bootstrapped OR: mean if normal = T, median otherwise \cr
+#'    \tab \cr
+#'    \code{lower} \tab Lower Bootstrapped 95% CI: using normal approximation if normal = T, 2.5th quantile otherwise \cr
+#'    \tab \cr
+#'    \code{upper} \tab Upper Bootstrapped 95% CI: using normal approximation if normal = T, 97.5th quantile otherwise \cr
 #' }
 #' @export
 #'
 #' @examples
-#' # Chop ----------------------------------------------------------------------
 #' data(cases)
-#' try(CXO_wt_boot(data=cases, exposure=ex, event=Event, Id = Id, B=3))
+#' try(CXO_wt_boot(data=cases, exposure=ex, event = Event, Id = Id, B=3))
+
 #' # It is recommended that at least 500 bootstrap replications are used
-#' # Unchop ----------------------------------------------------------------------
 #' \dontrun{
-#' CXO_wt_boot(data=cases, exposure=ex, event=Event, Id = Id, B=1000)
+#'
+#' CXO_wt_boot(data=cases, exposure = ex, event = Event, Id = Id, B = 1000)
 #' }
 CXO_wt_boot <- function(data, exposure, event, Id, B=500, normal = TRUE) {
 

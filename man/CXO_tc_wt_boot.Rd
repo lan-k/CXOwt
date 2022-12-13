@@ -21,27 +21,29 @@ CXO_tc_wt_boot(data, exposure, event, Id, B = 500, normal = TRUE)
 normal = F uses 2.5\% and 97.\% quantiles for 95\% CI}
 }
 \value{
-\if{html}{\out{<div class="sourceCode">}}\preformatted{    OR estimate and bootstrapped 95\% CI
-}\if{html}{\out{</div>}}
-
-\itemize{
-\item Variable - Parameter name
-\item est0 - OR from weighted conditional logistic regression
-\item est - Bootstrapped OR: mean if normal = TRUE, median otherwise
-\item lower - Lower Bootstrapped 95\% CI: using normal approximation if normal = T, 2.5th quantile otherwise
-\item upper - Upper Bootstrapped 95\% CI: using normal approximation if normal = T, 97.5th quantile otherwise
+A list containing:\tabular{ll}{
+\code{Variable} \tab Parameter name \cr
+\tab \cr
+\code{est0} \tab OR from weighted conditional logistic regression \cr
+\tab \cr
+\code{est} \tab Bootstrapped OR: mean if normal = T, median otherwise \cr
+\tab \cr
+\code{lower} \tab Lower Bootstrapped 95\% CI: using normal approximation if normal = T, 2.5th quantile otherwise \cr
+\tab \cr
+\code{upper} \tab Upper Bootstrapped 95\% CI: using normal approximation if normal = T, 97.5th quantile otherwise \cr
 }
 }
 \description{
 Weighted conditional logistic regression for case-time-control with bootstrapped CIs
 }
 \examples{
-# Chop ----------------------------------------------------------------------
+
 data(casetimecontrols)
-try(CXO_tc_wt_boot(casetimecontrols, exposure = ex, event = Event, Id=Id, B = 3))
+try(CXO_tc_wt_boot(casetimecontrols, exposure = ex, event = Event, Id = Id, B = 3))
+
 # It is recommended that at least 500 bootstrap replications are used
-# Unchop ----------------------------------------------------------------------
 \dontrun{
+
 CXO_tc_wt_boot(casetimecontrols, exposure = ex, event = Event, Id=Id, B = 1000)
 }
 }

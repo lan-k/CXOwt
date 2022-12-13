@@ -23,6 +23,14 @@ normal = F uses 2.5\% and 97.\% quantiles for 95\% CI}
 \value{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{    OR estimate and bootstrapped 95\% CI
 }\if{html}{\out{</div>}}
+
+\itemize{
+\item Variable - Parameter name
+\item est0 - OR from weighted conditional logistic regression
+\item est - Bootstrapped OR: mean if normal = TRUE, median otherwise
+\item lower - Lower Bootstrapped 95\% CI: using normal approximation if normal = T, 2.5th quantile otherwise
+\item upper - Upper Bootstrapped 95\% CI: using normal approximation if normal = T, 97.5th quantile otherwise
+}
 }
 \description{
 Weighted conditional logistic regression for case-time-control with bootstrapped CIs

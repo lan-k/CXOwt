@@ -117,6 +117,13 @@ CXO_tc_wt <- function(data, exposure, event, Id) {
 #'                  normal = F uses 2.5% and 97.% quantiles for 95% CI
 #'
 #' @return         OR estimate and bootstrapped 95% CI
+#' \itemize{
+#'   \item Variable - Parameter name
+#'   \item est0 - OR from weighted conditional logistic regression
+#'   \item est - Bootstrapped OR: mean if normal = TRUE, median otherwise
+#'   \item lower - Lower Bootstrapped 95% CI: using normal approximation if normal = T, 2.5th quantile otherwise
+#'   \item upper - Upper Bootstrapped 95% CI: using normal approximation if normal = T, 97.5th quantile otherwise
+#' }
 #' @export
 #'
 #' @examples

@@ -16,10 +16,12 @@ SCL_bias(data, exposure, event, Id)
 \item{Id}{person Id for strata}
 }
 \value{
-list with bias, CL and MH estimates
-bias \% difference between the CL and MH OR
-scl Standard Conditional logistic regression OR
-mh_or Mantel_Haenszel OR
+list with CL and MH estimates and \% bias
+\itemize{
+\item scl - Standard Conditional logistic regression OR
+\item mh_or - Mantel_Haenszel OR
+\item bias - \% difference between the CL and MH OR
+}
 }
 \description{
 Estimate bias due to conditional logistic regression in CXO study

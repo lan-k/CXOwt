@@ -103,8 +103,8 @@ normal = F uses 2.5% and 97.% quantiles for 95% CI</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Chop ----------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">CXO_wt_boot</span><span class="op">(</span>data<span class="op">=</span><span class="va">cases</span>, exposure<span class="op">=</span><span class="va">ex</span>, event<span class="op">=</span><span class="va">Event</span>, Id <span class="op">=</span> <span class="va">Id</span>, B<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Variable     est0      est    lower   upper</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> e        e 1.399722 1.522621 1.356163 1.70951</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Variable     est0      est    lower    upper</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> e        e 1.399722 1.382585 1.038984 1.839819</span>
 <span class="r-in"><span><span class="co"># It is recommended that at least 500 bootstrap replications are used</span></span></span>
 <span class="r-in"><span><span class="co"># Unchop ----------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>

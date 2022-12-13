@@ -36,6 +36,45 @@ This R package was is code to implement weighted conditional logistic regression
 remotes::install_github("lan-k/CXOwt")
 ```
 
+## Data
+
+Data should be structured with one row per period per person. The data should be ordered so that for each person, the earliest period appears first in the data, the case period appears last.
+
+The following 3 variables are required:
+Patient ID
+Binary exposure indicator (0 for unexposed or 1 for exposed)
+Binary indicator for the outcome
+
+- 0 in control periods
+- 1 in case period for cases
+- 0 in case period for time controls
+
+The package comes with two example dataframes
+
+- "cases" with cases only
+- "casetimecontrols" with cases and time controls
+
+The exposure variable is "ex" and the outcome variable is "Event".
+
+```{r data, eval=T}
+library(CXOwt)
+
+#case-crossover
+data(cases)
+
+head(cases)
+
+tail(cases) # last few rows of data for a case
+
+#case-time-controls
+data(casetimecontrols)
+
+tail(casetimecontrols[casetimecontrols$Id == 2,]) # last few rows of data for a time control
+
+
+```
+
+
 ## Using the package
 
 `CXOwt` contains functions for both case-crossover and case-time-control designs. There are 2 example dataframes, `cases` and `casetimecontrols`.
@@ -59,15 +98,22 @@ summary(ctcfit.b)
 ```
 
 
-Alternatively, you can return the weighted conditional logistic regression objects without bootstrapping:
+Alternatively, you can return the weighted conditional logistic regression objects without bootstrapping. However, the standard errors and 95% confidence intervals may not be accurate. The output will be a 'clogit' object. 
 
-```{r example2, eval=F}
+```{r example2, eval=T}
 #case-crossover
 cfit <- CXO_wt(cases, exposure = ex, event = Event, Id=Id)  
-summary(cfit)
+exp(cbind(coef(cfit), confint(cfit)))
 
 #case-time-control
 ctcfit <- CXO_tc_wt(casetimecontrols, exposure = ex, event = Event, Id=Id)   
-summary(ctcfit)
+exp(cbind(coef(ctcfit), confint(ctcfit)))
 
 ```
+
+
+Other functions include 
+
+- 'mhor' to produce Mantel-Haenszel (MH) Odds Ratios
+- 'SCL_bias' to estimate the bias in (unweighted) conditional logistic regression compared with MH ORs
+

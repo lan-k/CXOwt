@@ -15,6 +15,7 @@
 #' @importFrom dplyr slice_tail
 #' @importFrom dplyr summarise
 #' @importFrom dplyr ungroup
+#' @importFrom scales percent
 #' @importFrom stats coef
 #' @importFrom stats mantelhaen.test
 #' @importFrom stats quantile

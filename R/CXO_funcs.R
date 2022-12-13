@@ -40,7 +40,10 @@ mhor <- function(formula, data, digits=2)  {
 #' @param event     outcome variable
 #' @param Id        person Id for strata
 #'
-#' @return  list with bias, CL and MH estimates
+#' @return  list with CL and MH estimates and % bias
+#' scl Standard Conditional logistic regression OR
+#' mh_or Mantel_Haenszel OR
+#' bias % difference between the CL and MH OR
 #' @export
 #'
 #' @examples
@@ -62,21 +65,18 @@ SCL_bias <- function(data, exposure, event, Id) {
 
   cfit <- clogit(Event ~ ex + strata(Id) , data=cases, method="efron") #+ offset(wt)
 
-  est_scl <- exp(coef(cfit))
+  est_scl <- as.numeric(exp(coef(cfit)))
 
   mh <- mhor(formula = Event ~ Id/ex, data=cases)
   mh_OR <- as.numeric(mh$OR)
 
 
-  bias <- abs(100*( est_scl - mh_OR)/mh_OR)
+  bias <- percent(abs((as.numeric(est_scl) - mh_OR)/mh_OR),accuracy = 0.1)
 
-  sprintf("Bias is %.1f%%", bias)
 
-  return(list(bias, est_scl, mh_OR))
+  return(list( scl = est_scl, mh_or=mh_OR, bias=bias))
 
 }
-
-
 
 
 #' Weighted Conditional Logistic Regression for CXO study

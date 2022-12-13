@@ -17,6 +17,9 @@ SCL_bias(data, exposure, event, Id)
 }
 \value{
 list with bias, CL and MH estimates
+bias \% difference between the CL and MH OR
+scl Standard Conditional logistic regression OR
+mh_or Mantel_Haenszel OR
 }
 \description{
 Estimate bias due to conditional logistic regression in CXO study

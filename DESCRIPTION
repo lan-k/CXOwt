@@ -16,6 +16,7 @@ Imports:
     boot,
     dplyr,
     magrittr,
+    scales,
     stats,
     survival,
     utils

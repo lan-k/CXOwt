@@ -32,5 +32,7 @@ reference:
 - contents:
   - cases
   - casetimecontrols
+  - cases_tvc
+  - casetimecontrols_tvc
 
 

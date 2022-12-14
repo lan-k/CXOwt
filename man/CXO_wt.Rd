@@ -4,7 +4,7 @@
 \alias{CXO_wt}
 \title{Weighted Conditional Logistic Regression for CXO study}
 \usage{
-CXO_wt(data, exposure, event, Id)
+CXO_wt(data, exposure, event, Id, tvc = NULL)
 }
 \arguments{
 \item{data}{input dataframe}
@@ -14,6 +14,8 @@ CXO_wt(data, exposure, event, Id)
 \item{event}{name of outcome variable}
 
 \item{Id}{person ID}
+
+\item{tvc}{name of time-varying confounder (optional)}
 }
 \value{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{      weighted regression object from clogit

@@ -4,7 +4,7 @@
 \alias{CXO_tc_wt}
 \title{Weighted conditional logistic regression for case-time-control study}
 \usage{
-CXO_tc_wt(data, exposure, event, Id)
+CXO_tc_wt(data, exposure, event, Id, tvc = NULL)
 }
 \arguments{
 \item{data}{input dataframe}
@@ -14,6 +14,8 @@ CXO_tc_wt(data, exposure, event, Id)
 \item{event}{outcome variable}
 
 \item{Id}{person ID}
+
+\item{tvc}{time-varying confounder (optional)}
 }
 \value{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{    weighted regression object from clogit

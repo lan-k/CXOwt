@@ -4,7 +4,7 @@
 \alias{CXO_wt_boot}
 \title{Weighted conditional logistic regression for case-crossover with bootstrapped CIs}
 \usage{
-CXO_wt_boot(data, exposure, event, Id, B = 500, normal = TRUE)
+CXO_wt_boot(data, exposure, event, Id, tvc = NULL, B = 500, normal = TRUE)
 }
 \arguments{
 \item{data}{input dataframe}
@@ -14,6 +14,8 @@ CXO_wt_boot(data, exposure, event, Id, B = 500, normal = TRUE)
 \item{event}{outcome variable}
 
 \item{Id}{person Id}
+
+\item{tvc}{name of time-varying confounder (optional)}
 
 \item{B}{number of bootstrapped replicates, default is 500. Minimum 200 recommended}
 

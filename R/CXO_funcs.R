@@ -88,6 +88,7 @@ SCL_bias <- function(data, exposure, event, Id) {
 #' @param exposure   name of exposure variable
 #' @param event      name of outcome variable
 #' @param Id         person ID
+#' @param tvc        name of time-varying confounder (optional)
 #'
 #' @return           weighted regression object from clogit
 #' @export
@@ -96,18 +97,18 @@ SCL_bias <- function(data, exposure, event, Id) {
 #' data(cases)
 #' cfit <- CXO_wt(data=cases, exposure=ex, event=Event, Id=Id)
 #' summary(cfit)
-CXO_wt <- function(data, exposure, event, Id) {
+CXO_wt <- function(data, exposure, event, Id, tvc = NULL) {
   cases <- data %>%
-    mutate(e={{exposure}},
+    mutate(ex={{exposure}},
            Event={{event}},
            Id={{Id}}) %>%
     group_by(Id) %>%
     mutate(
-      minex=min(e),
-      maxex=max(e),
+      minex=min(ex),
+      maxex=max(ex),
       case_period = Event == 1,
       control_period = Event !=1,
-      c1=as.numeric(e==1 & case_period) #exposed case period
+      c1=as.numeric(ex==1 & case_period) #exposed case period
     ) %>%
     filter(minex != maxex)  %>%  #remove concordant cases
     ungroup()
@@ -117,10 +118,10 @@ CXO_wt <- function(data, exposure, event, Id) {
     group_by(Id) %>%
     summarise(c1=max(c1),
               c0=1-c1, #unexposed case period
-              PT10 = ifelse(c1==1, sum((1-e)*control_period),0),  #number of unexposed control periods per person
-              PT01 = ifelse(c1==0, sum(e*control_period),0),  #number of unexposed control periods per persons
-              PT0CXO = sum(1-e, na.rm=T), # number of unexposed (case or control) periods
-              PT1CXO = sum(e, na.rm=T) # number of exposed (case or control) periods
+              PT10 = ifelse(c1==1, sum((1-ex)*control_period),0),  #number of unexposed control periods per person
+              PT01 = ifelse(c1==0, sum(ex*control_period),0),  #number of unexposed control periods per persons
+              PT0CXO = sum(1-ex, na.rm=T), # number of unexposed (case or control) periods
+              PT1CXO = sum(ex, na.rm=T) # number of exposed (case or control) periods
     ) %>%
     mutate(a1=sum(c1, na.rm=T), #number of exposed case periods
            a0=sum(c0, na.rm=T), # number of unexposed case periods
@@ -135,11 +136,24 @@ CXO_wt <- function(data, exposure, event, Id) {
   cases_wt <- left_join(cases, dpt %>% select(Id,w0,w1), by="Id") %>% # number of unexposed case periods
     # rowwise() %>%
     ##calculate weights depending on whether period is exposed or unexposed
-    mutate(wt=ifelse(e==1, w1, w0),
-           lw=log(wt)) %>%
+    mutate(wt=ifelse(ex==1, w1, w0),
+           lw=log(wt),
+           ex=relevel(factor(ex), ref = "0")) %>%
     ungroup()
 
-  wfit <- clogit(Event ~ e + strata(Id) + offset(lw), data=cases_wt, method="efron")
+  if (!is.null(substitute(tvc)) ) {
+    cases_wt <- cases_wt %>%
+      mutate(z = {{tvc}},
+             z=relevel(factor(z), ref = "0")) %>%
+      ungroup()
+    wfit <- clogit(case_period ~ ex + z + strata(Id) + offset(lw) ,
+                   data=cases_wt, method="efron")
+  } else {
+
+    wfit <- clogit(case_period ~ ex  + strata(Id) + offset(lw) ,
+                   data=cases_wt, method="efron")
+  }
+
 
   return(wfit)
 
@@ -159,7 +173,7 @@ CXO_wt <- function(data, exposure, event, Id) {
 #' @return           coefficient of bootstrapped clogit
 #' @noRd
 
-.CI_boot <- function(data,ii, exposure, event, Id) {
+.CI_boot <- function(data,ii, exposure, event , Id, tvc = NULL) {
   ##internal function for bootstrapping the CIs
 
   df <- data %>%
@@ -175,8 +189,11 @@ CXO_wt <- function(data, exposure, event, Id) {
   dd <- cases[ii,] %>%
     mutate(newid = row_number()) %>%
     left_join(df, by="Id")
-
-  cfit <- CXO_wt(dd, exposure = {{exposure}}, event = {{event}}, Id=newid)
+  if (!is.null(substitute(tvc))) {
+    cfit <- CXO_wt(dd, exposure = {{exposure}}, event = {{event}},tvc={{tvc}}, Id=newid)
+  } else {
+    cfit <- CXO_wt(dd, exposure = {{exposure}}, event = {{event}}, Id=newid)
+  }
   return(coef(cfit))
 }
 
@@ -188,6 +205,7 @@ CXO_wt <- function(data, exposure, event, Id) {
 #' @param exposure  exposure variable
 #' @param event     outcome variable
 #' @param Id        person Id
+#' @param tvc       name of time-varying confounder (optional)
 #' @param B         number of bootstrapped replicates, default is 500. Minimum 200 recommended
 #' @param normal    use normal approximation for bootstrapped CI, default is TRUE
 #'                  normal = F uses 2.5% and 97.% quantiles for 95% CI
@@ -214,17 +232,32 @@ CXO_wt <- function(data, exposure, event, Id) {
 #'
 #' CXO_wt_boot(data=cases, exposure = ex, event = Event, Id = Id, B = 1000)
 #' }
-CXO_wt_boot <- function(data, exposure, event, Id, B=500, normal = TRUE) {
+CXO_wt_boot <- function(data, exposure, event, Id, tvc = NULL, B=500, normal = TRUE) {
 
-  df <- data %>%
-    mutate(e={{exposure}},
-           Event={{event}},
-           Id={{Id}}) %>%
-    select(e, Event, Id)
+  if (!is.null(substitute(tvc))) {
+    df <- data %>%
+      mutate(ex={{exposure}},
+             Event={{event}},
+             Id={{Id}},
+             z={{tvc}}) %>%
+      select(ex, Event, Id, z)
 
-  fitboot <- boot::boot(data=df, statistic = .CI_boot,
-                        exposure = e, event = Event, Id=Id,
-                        R=B)
+    fitboot <- boot(data=df, statistic = .CI_boot,
+                    exposure = ex, event = Event, Id=Id, tvc=z,
+                    R=B)
+
+  } else {
+    df <- data %>%
+      mutate(ex={{exposure}},
+             Event={{event}},
+             Id={{Id}}) %>%
+      select(ex, Event, Id)
+
+    fitboot <- boot(data=df, statistic = .CI_boot,
+                    exposure = ex, event = Event, Id=Id,
+                    R=B)
+
+  }
   nvars <- dim(fitboot$t)[2]
   ci <- list()
   for (i in (1:nvars)) {
